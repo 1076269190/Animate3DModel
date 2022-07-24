@@ -56,14 +56,32 @@
     </div>
     <div v-show="ifStart" id="two">
       <h2>"选择上传本地模型或者选用预存模型"</h2>
-      <div id="option">
-        <input type="file" class="file" id="file" @change="setup($event)" />
-        <div class="left">
-          <el-select
+      <div id="switchs">
+        <div class="switch">
+          <h5>抗锯齿:</h5>
+          <el-switch
+            v-model="value1"
+            active-color="black"
+            inactive-color="rgba(181,181,181)"
+          >
+          </el-switch>
+        </div>
+        <div class="switch">
+          <h5>透明度:</h5>
+          <el-switch
+            v-model="value2"
+            active-color="black"
+            inactive-color="rgba(181,181,181)"
+          >
+          </el-switch>
+        </div>
+      </div>
+      <el-select
             v-model="character"
             placeholder="请选择"
             :Popper-append-to-body="false"
           >
+            <input type="file" class="file" id="file" @change="setup($event)" />
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -72,11 +90,29 @@
             >
             </el-option>
           </el-select>
-          <h1 @click="start()" class="start-btn">选好了！</h1>
+      <div id="option">
+        <div class="left">
+          
+
+          <h1 @click="start()" class="start-btn">选好了</h1>
         </div>
       </div>
     </div>
     <div v-show="ifShow">
+      <div id="tips">
+        <div class="tip">
+          <h5>调整角度:</h5>
+          <svg t="1658594444558" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3199" width="48" height="48"><path d="M657.04718202 131.9327599h-110.69390207v-18.53986537c0-38.71560122-21.26631616-74.70475164-55.07430596-93.78990717l-32.17211932-17.99457521c-16.35870474-9.26993269-37.07973073-3.27174094-46.34966343 13.0869638-9.26993269 16.35870474-3.27174094 37.07973073 13.0869638 46.34966343l32.17211933 17.9945752c12.54167363 7.08877205 20.17573584 20.17573584 20.17573583 34.35327995v18.53986537H366.95281798c-108.51274143 0-196.30445688 88.33700559-196.30445687 196.30445686v298.81900657c0 181.58162259 147.77363281 329.90054556 329.90054557 329.90054556h23.4474768c181.58162259 0 329.90054556-147.77363281 329.90054557-329.90054556V328.23721676c-0.54529015-107.96745129-88.33700559-196.30445688-196.84974703-196.30445686z m128.14318712 495.66875358c0 143.9566017-117.23738396 261.73927581-261.73927582 261.73927583h-23.4474768c-143.9566017 0-261.73927581-117.23738396-261.73927582-261.73927583V477.64672005H784.64507898v149.95479343z m0-218.11606318h-265.55630693V200.09402964h136.86782965c70.88772053 0 128.14318712 57.80075674 128.14318712 128.14318712v81.24823354z" fill="#ffffff" p-id="3200"></path></svg>
+        </div>
+        <div class="tip">
+          <h5>调整位置:</h5>
+         <svg t="1658594420890" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2850" width="48" height="48"><path d="M657.04718202 131.9327599h-110.69390207v-18.53986537c0-38.71560122-21.26631616-74.70475164-55.07430596-93.78990717l-32.17211932-17.99457521c-16.35870474-9.26993269-37.07973073-3.27174094-46.34966343 13.0869638-9.26993269 16.35870474-3.27174094 37.07973073 13.0869638 46.34966343l32.17211933 17.9945752c12.54167363 7.08877205 20.17573584 20.17573584 20.17573583 34.35327995v18.53986537H366.95281798c-108.51274143 0-196.30445688 88.33700559-196.30445687 196.30445686v298.81900657c0 181.58162259 147.77363281 329.90054556 329.90054557 329.90054556h23.4474768c181.58162259 0 329.90054556-147.77363281 329.90054557-329.90054556V328.23721676c-0.54529015-107.96745129-88.33700559-196.30445688-196.84974703-196.30445686zM366.95281798 200.09402964H512v243.74470062H238.80963086V328.23721676c0-70.34243037 57.25546659-128.14318712 128.14318712-128.14318712z m157.0435655 688.70146951h-23.4474768c-143.9566017 0-261.73927581-117.23738396-261.73927582-261.73927582V512h546.38073828v115.60151348c0 143.9566017-117.23738396 261.19398567-261.19398566 261.19398567z" fill="#ffffff" p-id="2851"></path></svg>
+        </div>
+        <div class="tip">
+          <h5>调整视距:</h5>
+          <svg t="1658594386468" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2544" width="48" height="48"><path d="M512 510.90941968c-22.35689648 0-40.89676184-17.99457522-40.89676184-40.89676185V342.41476087c0-22.35689648 17.99457522-40.89676184 40.89676184-40.89676185 22.35689648 0 40.89676184 17.99457522 40.89676184 40.89676185v127.59789696c0 22.90218663-18.53986537 40.89676184-40.89676184 40.89676185z" fill="#ffffff" p-id="2545"></path><path d="M657.04718202 131.9327599h-110.69390207v-18.53986537c0-38.71560122-21.26631616-74.70475164-55.07430596-93.78990717l-32.17211932-17.99457521c-16.35870474-9.26993269-37.07973073-3.27174094-46.34966343 13.0869638-9.26993269 16.35870474-3.27174094 37.07973073 13.0869638 46.34966343l32.17211933 17.9945752c12.54167363 7.08877205 20.17573584 20.17573584 20.17573583 34.35327995v18.53986537H366.95281798c-108.51274143 0-196.30445688 88.33700559-196.30445687 196.30445686v298.81900657c0 181.58162259 147.77363281 329.90054556 329.90054557 329.90054556h23.4474768c181.58162259 0 329.90054556-147.77363281 329.90054557-329.90054556V328.23721676c-0.54529015-107.96745129-88.33700559-196.30445688-196.84974703-196.30445686z m128.14318712 495.66875358c0 143.9566017-117.23738396 261.73927581-261.73927582 261.73927583h-23.4474768c-143.9566017 0-261.19398567-117.23738396-261.19398566-261.73927583V328.23721676c0-70.88772053 57.80075674-128.14318712 128.14318712-128.14318712h290.09436404c70.88772053 0 128.14318712 57.80075674 128.14318712 128.14318712v299.36429672z" fill="#ffffff" p-id="2546"></path></svg>
+        </div>
+      </div>
       <div id="recode">
         <div id="endBtn">
           <svg
@@ -111,8 +147,11 @@
           >开始录制
         </div>
       </div>
+      <div id="loading">
+        <h2>{{ this.process }}</h2>
+      </div>
       <div class="preview" id="preview">
-        <video class="input_video" width="1280px" height="720px"></video>
+        <video class="input_video" width="1280" height="720"></video>
         <canvas class="guides"></canvas>
       </div>
     </div>
@@ -130,13 +169,30 @@ export default {
       ifStart: false,
       ifShow: false,
       options: [
-        {
-          value: "/static/vrm/3775384893171830519.vrm",
-          label: "黄毛",
+                {
+          value:
+            "/static/vrm/miku.vrm",
+          label: "miku",
         },
-        {
-          value: "/static/vrm/0zm0h120009p2fmwcDBAE-044-135e73c7f840_Ashtra(4).vrm",
-          label: "白毛",
+                {
+          value:
+            "/static/vrm/max.vrm",
+          label: "max",
+        },
+                {
+          value:
+            "/static/vrm/mario.vrm",
+          label: "mario",
+        },
+                {
+          value:
+            "/static/vrm/pikachu.vrm",
+          label: "pikachu",
+        },
+                {
+          value:
+            "/static/vrm/kaguya.vrm",
+          label: "四宮 かぐや",
         },
       ],
       character: "",
@@ -145,7 +201,16 @@ export default {
       visible: false,
       top: 0,
       left: 0,
+      process: "",
+      value1: true,
+      value2: true,
+      width: 0,
+      height: 0
     };
+  },
+  mounted(){
+    this.width = window.innerWidth
+    this.height = window.innerHeight
   },
   methods: {
     //start
@@ -160,16 +225,16 @@ export default {
     closeMenu() {
       this.visible = false;
     },
-    goToGithub(){
-      window.location.href = 'https://github.com/1076269190';
+    goToGithub() {
+      window.location.href = "https://github.com/1076269190";
     },
     start() {
-      console.log(this.character)
+      console.log(this.character);
       if (this.character === "") return;
       this.ifStart = false;
       this.ifShow = true;
 
-      let character = this.$data.character
+      let character = this.$data.character;
 
       //Import Helper Functions from Kalidokit
       const remap = Kalidokit.Utils.remap;
@@ -183,8 +248,14 @@ export default {
       let currentVrm;
 
       // renderer
-      const renderer = new THREE.WebGLRenderer({ alpha: true }); //创建渲染器对象
-      renderer.setSize(window.innerWidth * 0.95, window.innerHeight * 0.95); //设置renderer高宽
+      const renderer = new THREE.WebGLRenderer({
+        antialias: this.value1,
+        alpha: this.value2,
+      }); //创建渲染器对象
+      renderer.setSize(
+        window.innerWidth * 0.9999999,
+        window.innerHeight * 0.999999
+      ); //设置renderer高宽
       renderer.setPixelRatio(window.devicePixelRatio); //设置renderer像素比
       document.body.appendChild(renderer.domElement);
 
@@ -244,16 +315,21 @@ export default {
           THREE.VRM.from(gltf).then((vrm) => {
             scene.add(vrm.scene);
             currentVrm = vrm;
-            currentVrm.scene.rotation.y = Math.PI; // Rotate model 180deg to face camera
+            currentVrm.scene.rotation.y = Math.PI; // Rotate model 180deg to face
           });
         },
 
-        (progress) =>
+        (progress) => {
+          this.process =
+            "Loading model..." +
+            100.0 * (progress.loaded / progress.total) +
+            "%";
           console.log(
             "Loading model...",
             100.0 * (progress.loaded / progress.total),
             "%"
-          ),
+          );
+        },
 
         (error) => console.error(error)
       );
@@ -614,21 +690,23 @@ export default {
         onFrame: async () => {
           await holistic.send({ image: videoElement });
         },
-        width: 3000,
-        height: 3000,
+        width: 30000,
+        height: 30000,
       });
       camera.start();
 
       //拖拽
       this.move();
 
+      document.getElementById('preview').style.transform = "scale(" + this.height / 720 + ')'
+
       //recode
       let canvas = document.querySelectorAll("canvas");
       let canvasList = Array.from(canvas);
       let animateCanvas = canvasList[1];
       let stream = animateCanvas.mozCaptureStream
-        ? animateCanvas.mozCaptureStream(60)
-        : animateCanvas.captureStream(60);
+        ? animateCanvas.mozCaptureStream(120)
+        : animateCanvas.captureStream(120);
       let recorder = new MediaRecorder(stream, { mimeType: "video/webm" });
 
       recorder.onstop = () => {
@@ -678,6 +756,14 @@ export default {
     comeIn() {
       this.ifCome = false;
       this.ifStart = true;
+      this.$alert(
+        "-Animate3DModel兼容firefox,chrome,edge<br>-打开浏览器硬件(GPU)加速以更快的加载<br>-开始加载的卡顿是正常的请耐心等待片刻<br>-受浏览器限制若出现卡死等意外请刷新<br>-上传模型文件格式支持.vrm等<br>-模型下载推荐hub.vriod.com",
+        {
+          confirmButtonText: "确定",
+          dangerouslyUseHTMLString: true,
+          customClass: "message_box_alert",
+        }
+      );
     },
     setup(e) {
       // 创建文件读取对象
@@ -693,8 +779,9 @@ export default {
       //当读取成功后触发
       reader.onload = (e) => {
         that.character = e.target.result;
-        that.start();
+        // that.start();
       };
+      // document.getElementById('file').removeClass('-webkit-file-upload-button')
     },
     move() {
       let div = document.getElementById("preview");
@@ -729,10 +816,46 @@ export default {
         document.body.removeEventListener("click", this.closeMenu);
       }
     },
+    process(value) {
+      if (value === "Loading model...100%" || "") {
+        document.getElementById("loading").style.display = "none";
+      }
+    },
   },
 };
 </script>>
 
+<style>
+.el-message-box {
+  border-color: white !important;
+  background-color: white !important;
+}
+.el-message-box__content {
+  color: black !important;
+  padding: 3vh 0 0 4vw !important;
+}
+.el-button--primary {
+  background-color: black !important;
+  border-color: black !important;
+  color: white !important;
+}
+input[type="file"]::-webkit-file-upload-button {
+  background-color: white;
+  color: black;
+  border: none;
+  font-size: 10px;
+  /* padding: 1vw; */
+  width: 100%;
+  height: 5vh;
+  text-decoration: none;
+}
+.file {
+  width: 100%;
+  height: 5vh;
+  background-color: white;
+  /* border-radius: 10px; */
+}
+</style>
 <style lang="less" scoped>
 #app {
   -webkit-user-seletct: none;
@@ -815,40 +938,45 @@ export default {
     justify-content: center;
     align-items: center;
     align-content: center;
+    #switchs {
+      display: flex;
+      width: 100%;
+      justify-content: center;
+      .switch {
+        display: flex;
+        align-items: center;
+        margin: 0 1vw 0 1vw;
+        h5 {
+          margin: 0;
+        }
+        .el-switch {
+          padding: 1vh;
+          display: inline-block;
+        }
+      }
+    }
+    
+        /deep/.el-input__inner {
+          border: 1px solid black;
+          background-color: black;
+          color: white;
+          margin: 3vh 0 2vh 0;
+        }
     #option {
       display: flex;
       flex-direction: row;
       align-items: center;
       justify-content: center;
-      .file {
-        width: 20vw;
-        height: 20vh;
-        background-color: black;
-        border-radius: 20px;
-      }
       .left {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         align-items: center;
-        height: 20vh;
         width: 20vw;
-        /deep/.el-input__inner {
-          border: 1px solid black;
-          background-color: black;
-          color: white;
-        }
         h1 {
+          margin:0;
           cursor: pointer;
         }
-      }
-      input[type="file"]::-webkit-file-upload-button {
-        background-color: black;
-        color: white;
-        font-size: 2vw;
-        padding: 1vw;
-        width: 20vw;
-        height: 20vh;
       }
     }
   }
@@ -857,13 +985,49 @@ export default {
     display: block;
     cursor: all-scroll;
   }
+  #loading {
+    position: absolute;
+    left: 32vw;
+    top: 45vh;
+    transform: translateX(-50%);
+    transform: translateY(-50%);
+  }
+  #tips {
+    position: fixed;
+    right: 1vw;
+    top: 1vw;
+    width: 12vw;
+    height: 18vh;
+    border: 1px solid black;
+    background-color: black;
+    color: white;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    .tip {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      justify-content: space-evenly;
+      svg {
+        width: 2vw;
+        height: 2vw;
+      }
+      h5 {
+        margin: 0;
+      }
+    }
+  }
   #recode {
     #startBtn {
-      width: 7vw;
+      width: 10vw;
       height: 6vh;
       background-color: black;
       position: fixed;
-      right: 10vw;
+      right: 51vw;
       top: 2vh;
       border-radius: 10px;
       color: #fff;
@@ -880,11 +1044,11 @@ export default {
       }
     }
     #endBtn {
-      width: 7vw;
+      width: 10vw;
       height: 6vh;
       background-color: rgba(100, 100, 100);
       position: fixed;
-      right: 2vw;
+      right: 40vw;
       top: 2vh;
       border-radius: 10px;
       color: #fff;
@@ -905,11 +1069,13 @@ export default {
     display: flex;
     flex-direction: column;
     position: absolute;
-    bottom: 16px;
-    right: 16px;
+    bottom: 1vh;
+    right: 1vw;
     overflow: hidden;
     border-radius: 8px;
     background: #222;
+    transform-origin: 100% 100%;
+    // transform: scale();
     .guides {
       position: absolute;
       bottom: 0;
