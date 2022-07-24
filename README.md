@@ -1,6 +1,6 @@
 # Animate3DModel
 
-#### :star::star:**Animate3DModel**是基于<font color=orange>**holistic THREE.js kalidokit.js**</font>的web<font color=green>**在线人体骨骼捕捉模型模仿****</font>:star::star:
+#### :star::star:**Animate3DModel**是基于<font color=orange>**holistic THREE.js kalidokit.js**</font>的web<font color=green>**在线人体骨骼捕捉模型模仿**</font>:star::star:
 
 *你可以在网站（**暂未开放**）在线体验*
 
