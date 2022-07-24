@@ -2,7 +2,7 @@
 
 **Animate3DModel**是一个基于mediaPIPE THREE.js kalidokit.js的网页在线人体骨骼捕捉模型模仿的web，你可以在****网站（暂未开放）在线体验
 
-![](public\1.png)
+![](https://raw.githubusercontent.com/1076269190/Animate3DModel/main/public/1.png)
 
 你可以在Animate3DModel里做到：
 
@@ -10,7 +10,7 @@
 - **.vrm格式模型在线上传  上传模型，剩下的交给Animate3DModel**
 - **模型动画在线录制下载.webm格式视频  光给自己看怎么能行**
 
-![](public\3.png)
+![](https://raw.githubusercontent.com/1076269190/Animate3DModel/main/public/3.png)
 
 （网站支持chrome，edge，firefox与部分手机浏览器）
 
